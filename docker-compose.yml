@@ -1,9 +1,9 @@
-version: "2"
+version: "3"
 
 services:
 
   nginx:
-    image: nginx:latest
+    image: nginx:${NGINX_VERSION}
     ports:
     - "8080:80"
     volumes:
@@ -13,22 +13,22 @@ services:
       - web
 
   php:
-    image: php:7.1-fpm
-    # image: php:5.6-fpm
+    image: php:${PHP_VERSION}-fpm
     volumes:
       - ./web:/var/www/html
     networks:
       - web
 
   mysql:
-    image: mysql:latest
+    image: mysql:${MYSQL_VERSION}
     ports:
       - "3307:3306"
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: basic
-      MYSQL_USER: basic
-      MYSQL_PASSWORD: basic
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_ROOT_USER: ${MYSQL_ROOT_USER}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     networks:
       - web
 

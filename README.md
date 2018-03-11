@@ -1,6 +1,6 @@
 # Docker Basic
 
-A basic Docker setup with Nginx and PHP.
+A basic Docker setup with Nginx, PHP and Mysql.
 
 ## Getting started:
 ```
